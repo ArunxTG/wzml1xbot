@@ -67,15 +67,15 @@ if UPSTREAM_REPO is not None:
                      && git config --global user.name weebzone \
                      && git add . \
                      && git commit -sm update -q \
-                     && git remote add origin {UPSTREAM_REPO} \
+                     && git remote add origin \
                      && git fetch origin -q \
-                     && git reset --hard origin/{UPSTREAM_BRANCH} -q"], shell=True)
+                     && git reset --hard origin/-q"], shell=True)
 
     repo = UPSTREAM_REPO.split('/')
     UPSTREAM_REPO = f"https://github.com/{repo[-2]}/{repo[-1]}"
     if update.returncode == 0:
         log_info('Successfully updated with latest commits !!')
-        log_info(f'UPSTREAM_REPO: {UPSTREAM_REPO} | UPSTREAM_BRANCH: {UPSTREAM_BRANCH}')
+        log_info(f'🚀')
     else:
         log_error('Something went Wrong !!')
-        log_error(f'UPSTREAM_REPO: {UPSTREAM_REPO} | UPSTREAM_BRANCH: {UPSTREAM_BRANCH}')
+        log_error(f'🚀')
